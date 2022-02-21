@@ -42,4 +42,22 @@
         android:textAllCaps="false"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jobIntentService"
+        android:text="@string/job_intent_service"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/workManager"
+        android:text="@string/work_manager"
+        android:textAllCaps="false"
+        />
+
+
+
 </LinearLayout>

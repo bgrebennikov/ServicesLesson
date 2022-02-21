@@ -13,6 +13,8 @@ import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
+import androidx.work.ExistingWorkPolicy
+import androidx.work.WorkManager
 import com.bgrebennikov.github.serviceslesson.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -46,8 +48,22 @@ class MainActivity : AppCompatActivity() {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 jobScheduler.enqueue(jobInfo, JobWorkItem(JobServiceMain.newIntent(page++)))
+            } else{
+                startService(IntentServiceMain.newIntent(this, page++))
             }
+        }
 
+        binding.jobIntentService.setOnClickListener {
+            JobIntentServiceMain.enqueue(this, page++)
+        }
+
+        binding.workManager.setOnClickListener {
+            val workManager = WorkManager.getInstance(applicationContext)
+            workManager.enqueueUniqueWork(
+                WorkerMain.WORKER_NAME,
+                ExistingWorkPolicy.APPEND,
+                WorkerMain.makeRequest(page++)
+            )
         }
 
     }
