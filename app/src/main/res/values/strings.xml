@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ServicesLesson</string>
+    <string name="service">Service</string>
+    <string name="foreground_service">Foreground Service</string>
+    <string name="stop_service">stop service</string>
+    <string name="job_scheduler">Job Scheduler</string>
+</resources>
